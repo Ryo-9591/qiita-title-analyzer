@@ -1,34 +1,10 @@
 services:
-  backend:
-    build: ./backend
-    container_name: qiita-backend
-    ports:
-      - "${BACKEND_PORT}:5000"
+  qiita-analyzer:
+    build: .
+    container_name: qiita-title-analyzer
     volumes:
-      - ./backend/app/data:/app/app/data
+      # 生成されたファイルをホストにマウント
+      - ./output:/app/output
     environment:
-      - MIN_LIKES=${MIN_LIKES}
-      - QIITA_MAX_PAGES=${QIITA_MAX_PAGES}
-      - QIITA_PER_PAGE=${QIITA_PER_PAGE}
-      - MIN_COUNT=${MIN_COUNT}
-      - CACHE_TTL_SECONDS=${CACHE_TTL_SECONDS}
-      - MIN_STOCKS=${MIN_STOCKS}
-      - QIITA_SEARCH_QUERY=${QIITA_SEARCH_QUERY}
-    networks:
-      - app-net
-
-  frontend:
-    build: ./frontend
-    container_name: qiita-frontend
-    ports:
-      - "${FRONTEND_PORT}:5173"
-    environment:
-      - VITE_API_BASE=${VITE_API_BASE}
-    depends_on:
-      - backend
-    networks:
-      - app-net
-
-networks:
-  app-net:
-    driver: bridge
+      - PYTHONUNBUFFERED=1
+      - QIITA_TOKEN=${QIITA_TOKEN}
