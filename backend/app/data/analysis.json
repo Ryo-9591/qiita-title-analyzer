@@ -1,0 +1,802 @@
+[
+  {
+    "text": "AI",
+    "value": 31
+  },
+  {
+    "text": "生成",
+    "value": 18
+  },
+  {
+    "text": "データ",
+    "value": 16
+  },
+  {
+    "text": "学習",
+    "value": 15
+  },
+  {
+    "text": "開発",
+    "value": 14
+  },
+  {
+    "text": "アプリ",
+    "value": 12
+  },
+  {
+    "text": "実装",
+    "value": 12
+  },
+  {
+    "text": "コード",
+    "value": 11
+  },
+  {
+    "text": "ライブラリ",
+    "value": 11
+  },
+  {
+    "text": "LLM",
+    "value": 9
+  },
+  {
+    "text": "プログラミング",
+    "value": 8
+  },
+  {
+    "text": "MCP",
+    "value": 8
+  },
+  {
+    "text": "Streamlit",
+    "value": 8
+  },
+  {
+    "text": "画像",
+    "value": 8
+  },
+  {
+    "text": "モデル",
+    "value": 7
+  },
+  {
+    "text": "エージェント",
+    "value": 7
+  },
+  {
+    "text": "Claude",
+    "value": 7
+  },
+  {
+    "text": "構築",
+    "value": 7
+  },
+  {
+    "text": "処理",
+    "value": 7
+  },
+  {
+    "text": "ツール",
+    "value": 6
+  },
+  {
+    "text": "実践",
+    "value": 6
+  },
+  {
+    "text": "投資",
+    "value": 6
+  },
+  {
+    "text": "理由",
+    "value": 6
+  },
+  {
+    "text": "高速",
+    "value": 6
+  },
+  {
+    "text": "RAG",
+    "value": 6
+  },
+  {
+    "text": "ローカル",
+    "value": 6
+  },
+  {
+    "text": "機能",
+    "value": 6
+  },
+  {
+    "text": "エンジニア",
+    "value": 6
+  },
+  {
+    "text": "ED",
+    "value": 6
+  },
+  {
+    "text": "AWS",
+    "value": 5
+  },
+  {
+    "text": "自動",
+    "value": 5
+  },
+  {
+    "text": "テクニック",
+    "value": 5
+  },
+  {
+    "text": "爆速",
+    "value": 5
+  },
+  {
+    "text": "分析",
+    "value": 5
+  },
+  {
+    "text": "資料",
+    "value": 5
+  },
+  {
+    "text": "機械",
+    "value": 5
+  },
+  {
+    "text": "解析",
+    "value": 5
+  },
+  {
+    "text": "最新",
+    "value": 5
+  },
+  {
+    "text": "Web",
+    "value": 5
+  },
+  {
+    "text": "可視",
+    "value": 5
+  },
+  {
+    "text": "Pyxel",
+    "value": 5
+  },
+  {
+    "text": "GPT",
+    "value": 5
+  },
+  {
+    "text": "ドキュメント",
+    "value": 4
+  },
+  {
+    "text": "ガイド",
+    "value": 4
+  },
+  {
+    "text": "株式",
+    "value": 4
+  },
+  {
+    "text": "uv",
+    "value": 4
+  },
+  {
+    "text": "テスト",
+    "value": 4
+  },
+  {
+    "text": "知識",
+    "value": 4
+  },
+  {
+    "text": "会社",
+    "value": 4
+  },
+  {
+    "text": "精度",
+    "value": 4
+  },
+  {
+    "text": "図解",
+    "value": 4
+  },
+  {
+    "text": "必見",
+    "value": 4
+  },
+  {
+    "text": "理解",
+    "value": 4
+  },
+  {
+    "text": "言語",
+    "value": 4
+  },
+  {
+    "text": "実行",
+    "value": 4
+  },
+  {
+    "text": "推論",
+    "value": 4
+  },
+  {
+    "text": "ベイズ",
+    "value": 4
+  },
+  {
+    "text": "書籍",
+    "value": 4
+  },
+  {
+    "text": "株価",
+    "value": 4
+  },
+  {
+    "text": "並列",
+    "value": 4
+  },
+  {
+    "text": "仕組み",
+    "value": 3
+  },
+  {
+    "text": "簡単",
+    "value": 3
+  },
+  {
+    "text": "戦略",
+    "value": 3
+  },
+  {
+    "text": "結果",
+    "value": 3
+  },
+  {
+    "text": "通知",
+    "value": 3
+  },
+  {
+    "text": "実験",
+    "value": 3
+  },
+  {
+    "text": "時代",
+    "value": 3
+  },
+  {
+    "text": "初学",
+    "value": 3
+  },
+  {
+    "text": "関数",
+    "value": 3
+  },
+  {
+    "text": "FastAPI",
+    "value": 3
+  },
+  {
+    "text": "API",
+    "value": 3
+  },
+  {
+    "text": "向け",
+    "value": 3
+  },
+  {
+    "text": "更新",
+    "value": 3
+  },
+  {
+    "text": "仮想",
+    "value": 3
+  },
+  {
+    "text": "技術",
+    "value": 3
+  },
+  {
+    "text": "作成",
+    "value": 3
+  },
+  {
+    "text": "リスト",
+    "value": 3
+  },
+  {
+    "text": "経験",
+    "value": 3
+  },
+  {
+    "text": "日本語",
+    "value": 3
+  },
+  {
+    "text": "可能",
+    "value": 3
+  },
+  {
+    "text": "シンプル",
+    "value": 3
+  },
+  {
+    "text": "プロジェクト",
+    "value": 3
+  },
+  {
+    "text": "標準",
+    "value": 3
+  },
+  {
+    "text": "ファイル",
+    "value": 3
+  },
+  {
+    "text": "リリース",
+    "value": 3
+  },
+  {
+    "text": "予測",
+    "value": 3
+  },
+  {
+    "text": "Gemini",
+    "value": 3
+  },
+  {
+    "text": "ブラウザ",
+    "value": 3
+  },
+  {
+    "text": "管理",
+    "value": 3
+  },
+  {
+    "text": "復元",
+    "value": 3
+  },
+  {
+    "text": "効率",
+    "value": 3
+  },
+  {
+    "text": "AtCoder",
+    "value": 3
+  },
+  {
+    "text": "説明",
+    "value": 3
+  },
+  {
+    "text": "Docker",
+    "value": 3
+  },
+  {
+    "text": "比較",
+    "value": 3
+  },
+  {
+    "text": "金子",
+    "value": 3
+  },
+  {
+    "text": "python",
+    "value": 3
+  },
+  {
+    "text": "Flet",
+    "value": 3
+  },
+  {
+    "text": "確率",
+    "value": 2
+  },
+  {
+    "text": "今日",
+    "value": 2
+  },
+  {
+    "text": "数字",
+    "value": 2
+  },
+  {
+    "text": "Bluetooth",
+    "value": 2
+  },
+  {
+    "text": "チケット",
+    "value": 2
+  },
+  {
+    "text": "サービス",
+    "value": 2
+  },
+  {
+    "text": "設計",
+    "value": 2
+  },
+  {
+    "text": "仕事",
+    "value": 2
+  },
+  {
+    "text": "スクリーニング",
+    "value": 2
+  },
+  {
+    "text": "向上",
+    "value": 2
+  },
+  {
+    "text": "保存",
+    "value": 2
+  },
+  {
+    "text": "utf",
+    "value": 2
+  },
+  {
+    "text": "違い",
+    "value": 2
+  },
+  {
+    "text": "英語",
+    "value": 2
+  },
+  {
+    "text": "あなた",
+    "value": 2
+  },
+  {
+    "text": "Qiita",
+    "value": 2
+  },
+  {
+    "text": "DL",
+    "value": 2
+  },
+  {
+    "text": "yfinance",
+    "value": 2
+  },
+  {
+    "text": "発見",
+    "value": 2
+  },
+  {
+    "text": "月利",
+    "value": 2
+  },
+  {
+    "text": "組み込み",
+    "value": 2
+  },
+  {
+    "text": "if",
+    "value": 2
+  },
+  {
+    "text": "ノック",
+    "value": 2
+  },
+  {
+    "text": "サーバー",
+    "value": 2
+  },
+  {
+    "text": "Google",
+    "value": 2
+  },
+  {
+    "text": "Agent",
+    "value": 2
+  },
+  {
+    "text": "使い方",
+    "value": 2
+  },
+  {
+    "text": "備忘録",
+    "value": 2
+  },
+  {
+    "text": "編集",
+    "value": 2
+  },
+  {
+    "text": "フレーム",
+    "value": 2
+  },
+  {
+    "text": "ワーク",
+    "value": 2
+  },
+  {
+    "text": "物体",
+    "value": 2
+  },
+  {
+    "text": "検出",
+    "value": 2
+  },
+  {
+    "text": "Windows",
+    "value": 2
+  },
+  {
+    "text": "OCR",
+    "value": 2
+  },
+  {
+    "text": "カルマンフィルタ",
+    "value": 2
+  },
+  {
+    "text": "スコア",
+    "value": 2
+  },
+  {
+    "text": "自作",
+    "value": 2
+  },
+  {
+    "text": "オープン",
+    "value": 2
+  },
+  {
+    "text": "ソース",
+    "value": 2
+  },
+  {
+    "text": "拡張",
+    "value": 2
+  },
+  {
+    "text": "数式",
+    "value": 2
+  },
+  {
+    "text": "網羅",
+    "value": 2
+  },
+  {
+    "text": "Pydantic",
+    "value": 2
+  },
+  {
+    "text": "強力",
+    "value": 2
+  },
+  {
+    "text": "GPU",
+    "value": 2
+  },
+  {
+    "text": "関連",
+    "value": 2
+  },
+  {
+    "text": "魅力",
+    "value": 2
+  },
+  {
+    "text": "Markdown",
+    "value": 2
+  },
+  {
+    "text": "変換",
+    "value": 2
+  },
+  {
+    "text": "Microsoft",
+    "value": 2
+  },
+  {
+    "text": "MarkItDown",
+    "value": 2
+  },
+  {
+    "text": "物理",
+    "value": 2
+  },
+  {
+    "text": "ネタ",
+    "value": 2
+  },
+  {
+    "text": "ベストプラクティス",
+    "value": 2
+  },
+  {
+    "text": "登場",
+    "value": 2
+  },
+  {
+    "text": "東大",
+    "value": 2
+  },
+  {
+    "text": "公開",
+    "value": 2
+  },
+  {
+    "text": "Kaggle",
+    "value": 2
+  },
+  {
+    "text": "不要",
+    "value": 2
+  },
+  {
+    "text": "視覚",
+    "value": 2
+  },
+  {
+    "text": "特徴",
+    "value": 2
+  },
+  {
+    "text": "マルチモーダル",
+    "value": 2
+  },
+  {
+    "text": "レトロゲーム",
+    "value": 2
+  },
+  {
+    "text": "PyMuPDF",
+    "value": 2
+  },
+  {
+    "text": "手法",
+    "value": 2
+  },
+  {
+    "text": "操作",
+    "value": 2
+  },
+  {
+    "text": "制御",
+    "value": 2
+  },
+  {
+    "text": "ゼロ",
+    "value": 2
+  },
+  {
+    "text": "コーディング",
+    "value": 2
+  },
+  {
+    "text": "マスター",
+    "value": 2
+  },
+  {
+    "text": "Pandas",
+    "value": 2
+  },
+  {
+    "text": "好き",
+    "value": 2
+  },
+  {
+    "text": "システム",
+    "value": 2
+  },
+  {
+    "text": "検索",
+    "value": 2
+  },
+  {
+    "text": "活用",
+    "value": 2
+  },
+  {
+    "text": "エンジン",
+    "value": 2
+  },
+  {
+    "text": "改善",
+    "value": 2
+  },
+  {
+    "text": "LangChain",
+    "value": 2
+  },
+  {
+    "text": "Gaussian",
+    "value": 2
+  },
+  {
+    "text": "Splatting",
+    "value": 2
+  },
+  {
+    "text": "ChatGPT",
+    "value": 2
+  },
+  {
+    "text": "基本",
+    "value": 2
+  },
+  {
+    "text": "セキュア",
+    "value": 2
+  },
+  {
+    "text": "Raspberry",
+    "value": 2
+  },
+  {
+    "text": "Pi",
+    "value": 2
+  },
+  {
+    "text": "次元",
+    "value": 2
+  },
+  {
+    "text": "最適",
+    "value": 2
+  },
+  {
+    "text": "概要",
+    "value": 2
+  },
+  {
+    "text": "検証",
+    "value": 2
+  },
+  {
+    "text": "連携",
+    "value": 2
+  },
+  {
+    "text": "性能",
+    "value": 2
+  },
+  {
+    "text": "MNIST",
+    "value": 2
+  },
+  {
+    "text": "大学生",
+    "value": 2
+  },
+  {
+    "text": "強化",
+    "value": 2
+  },
+  {
+    "text": "勉強",
+    "value": 2
+  },
+  {
+    "text": "MuJoCo",
+    "value": 2
+  },
+  {
+    "text": "プロ",
+    "value": 2
+  },
+  {
+    "text": "Amazon",
+    "value": 2
+  },
+  {
+    "text": "Turbo",
+    "value": 2
+  },
+  {
+    "text": "後継",
+    "value": 2
+  },
+  {
+    "text": "取得",
+    "value": 2
+  }
+]
