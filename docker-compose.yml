@@ -3,19 +3,17 @@ services:
     build: ./backend
     container_name: qiita-backend
     ports:
-      - "5000:5000"
+      - "${BACKEND_PORT}:5000"
     volumes:
       - ./backend/app/data:/app/app/data
     environment:
-      - QIITA_TAG=Python
-      - MIN_LIKES=50
-      - QIITA_MAX_PAGES=10
-      - QIITA_PER_PAGE=100
-      - MIN_COUNT=2
-      - STOPWORDS=Python3,初心者,導入
-      - CACHE_TTL_SECONDS=7200
-      - MIN_STOCKS=10
-      - QIITA_SEARCH_QUERY=tag:Python stocks:>10 created:>=2024-01-01
+      - MIN_LIKES=${MIN_LIKES}
+      - QIITA_MAX_PAGES=${QIITA_MAX_PAGES}
+      - QIITA_PER_PAGE=${QIITA_PER_PAGE}
+      - MIN_COUNT=${MIN_COUNT}
+      - CACHE_TTL_SECONDS=${CACHE_TTL_SECONDS}
+      - MIN_STOCKS=${MIN_STOCKS}
+      - QIITA_SEARCH_QUERY=${QIITA_SEARCH_QUERY}
     networks:
       - app-net
 
@@ -23,9 +21,9 @@ services:
     build: ./frontend
     container_name: qiita-frontend
     ports:
-      - "5173:5173"
+      - "${FRONTEND_PORT}:5173"
     environment:
-      - VITE_API_BASE=/api
+      - VITE_API_BASE=${VITE_API_BASE}
     depends_on:
       - backend
     networks:
@@ -34,5 +32,3 @@ services:
 networks:
   app-net:
     driver: bridge
-
-

@@ -2,7 +2,6 @@ import os
 import json
 from typing import List, Dict, Any
 
-# 日本語コメント: キャッシュ生成と保存の責務を分離
 from .qiita_service import fetch_tag_items, fetch_search_items
 from .analyzer import analyze_titles
 
@@ -33,7 +32,7 @@ def get_cache_path(data_dir: str) -> str:
 
 def _load_envs() -> Dict[str, Any]:
     return {
-        "tag": os.getenv("QIITA_TAG", "Python"),
+        "tag": os.getenv("QIITA_TAG", ""),  # 空文字列をデフォルトに変更
         "min_likes": int(os.getenv("MIN_LIKES", "50")),
         "max_pages": int(os.getenv("QIITA_MAX_PAGES", "10")),
         "per_page": int(os.getenv("QIITA_PER_PAGE", "100")),
@@ -93,8 +92,10 @@ def build_cache_if_needed(data_dir: str, force: bool = False) -> None:
         "てる",
         "でき",
         "され",
-        env["tag"],
     }
+    # タグが指定されている場合のみストップワードに追加
+    if env["tag"]:
+        default_stop.add(env["tag"])
     stopwords |= default_stop
 
     # データ取得
@@ -102,9 +103,15 @@ def build_cache_if_needed(data_dir: str, force: bool = False) -> None:
         items = fetch_search_items(
             env["query"], max_pages=env["max_pages"], per_page=env["per_page"]
         )
-    else:
+    elif env["tag"]:
         items = fetch_tag_items(
             env["tag"], max_pages=env["max_pages"], per_page=env["per_page"]
+        )
+    else:
+        # タグもクエリも指定されていない場合は、デフォルトの検索クエリを使用
+        default_query = f"stocks:>{env['min_stocks']} created:>=2024-01-01"
+        items = fetch_search_items(
+            default_query, max_pages=env["max_pages"], per_page=env["per_page"]
         )
 
     # フィルタ
