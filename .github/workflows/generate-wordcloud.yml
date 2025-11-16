@@ -1,0 +1,45 @@
+name: Generate Qiita WordCloud Daily
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # UTCで毎日0時実行
+  workflow_dispatch: {}
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        run: |
+          docker build -t qiita-analyzer .
+
+      - name: Prepare output dir
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/output"
+
+      - name: Run analyzer
+        env:
+          QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
+        run: |
+          docker run --rm \
+            -e QIITA_TOKEN="$QIITA_TOKEN" \
+            -v "$GITHUB_WORKSPACE/output":/app/output \
+            qiita-analyzer
+
+      - name: Show generated paths
+        run: |
+          ls -la output || true
+          find output -maxdepth 2 -type f -print || true
+
+      - name: Upload artifact (output)
+        uses: actions/upload-artifact@v4
+        with:
+          name: qiita-wordcloud-output
+          path: output/**
+          if-no-files-found: warn
