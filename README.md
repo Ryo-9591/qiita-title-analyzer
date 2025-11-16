@@ -29,8 +29,9 @@ Docker環境で動作するQiitaバズタイトル分析アプリケーション
 ├── requirements.txt        # Python依存関係
 ├── qiita_analysis.py      # メイン分析スクリプト
 ├── output/                # 出力ファイル格納ディレクトリ
-│   ├── wordcloud_qiita.png    # WordCloud画像
-│   └── analysis_results.csv   # 分析結果CSV
+│   └── YYYY-MM-DD/           # 生成日のサブフォルダ
+│       ├── wordcloud_qiita.png    # WordCloud画像
+│       └── analysis_results.csv   # 分析結果CSV
 └── README.md              # このファイル
 ```
 
@@ -73,10 +74,19 @@ docker run -v $(pwd)/output:/app/output -e QIITA_TOKEN=your_token qiita-analyzer
 
 ### 2. 出力ファイルの確認
 
-実行後、`output`ディレクトリに以下のファイルが生成されます：
+実行後、`output/YYYY-MM-DD` ディレクトリ（生成日ごと）に以下のファイルが生成されます：
 
 - `wordcloud_qiita.png`: WordCloud画像
 - `analysis_results.csv`: 単語頻度分析結果
+
+例:
+
+```
+output/
+  2025-11-16/
+    wordcloud_qiita.png
+    analysis_results.csv
+```
 
 ### 3. 設定の変更
 
@@ -100,4 +110,16 @@ PAGE_COUNT = 5       # 取得するページ数
 ## ライセンス
 
 MIT License
+
+## GitHub Actions での自動実行
+
+このリポジトリには、毎日1回（UTC 00:00）自動で分析を実行するワークフローが含まれています（`.github/workflows/generate-wordcloud.yml`）。
+
+設定手順:
+
+1. GitHub リポジトリの Settings → Secrets and variables → Actions → New repository secret から以下を登録
+   - `QIITA_TOKEN`: Qiita API トークン（任意だが推奨）
+2. ワークフローは既定で毎日実行され、生成物は Actions の Artifacts に `qiita-wordcloud-output` としてアップロードされます。
+
+手動実行も可能です（Actions タブ → Generate Qiita WordCloud Daily → Run workflow）。
 

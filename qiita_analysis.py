@@ -11,6 +11,7 @@ import time
 import re
 import glob
 from typing import List, Dict, Optional
+from datetime import datetime
 
 # 定数設定
 TOP_PERCENT = 0.1  # バズの定義：いいね数上位10%の記事
@@ -304,7 +305,15 @@ def create_wordcloud(word_df: pd.DataFrame) -> None:
         )
 
     plt.tight_layout()
-    plt.savefig("/app/output/wordcloud_qiita.png", dpi=300, bbox_inches="tight")
+
+    # 日付別の出力ディレクトリを作成
+    base_output_dir = "/app/output"
+    date_dir = datetime.now().strftime("%Y-%m-%d")
+    output_dir = os.path.join(base_output_dir, date_dir)
+    os.makedirs(output_dir, exist_ok=True)
+
+    # 画像を保存
+    plt.savefig(os.path.join(output_dir, "wordcloud_qiita.png"), dpi=300, bbox_inches="tight")
     plt.close()
 
 
@@ -329,10 +338,16 @@ def export_results(word_df: pd.DataFrame) -> None:
     # 空の単語を除去
     word_df_clean = word_df_clean[word_df_clean["word"].str.len() > 0]
 
+    # 日付別の出力ディレクトリを作成
+    base_output_dir = "/app/output"
+    date_dir = datetime.now().strftime("%Y-%m-%d")
+    output_dir = os.path.join(base_output_dir, date_dir)
+    os.makedirs(output_dir, exist_ok=True)
+
     # CSVファイルに保存（エラー処理付き）
     try:
         word_df_clean.to_csv(
-            "/app/output/analysis_results.csv",
+            os.path.join(output_dir, "analysis_results.csv"),
             index=False,
             encoding="utf-8-sig",
             errors="replace",
@@ -340,7 +355,7 @@ def export_results(word_df: pd.DataFrame) -> None:
     except Exception:
         # フォールバック: ASCIIエンコーディングで保存
         word_df_clean.to_csv(
-            "/app/output/analysis_results.csv",
+            os.path.join(output_dir, "analysis_results.csv"),
             index=False,
             encoding="ascii",
             errors="replace",
