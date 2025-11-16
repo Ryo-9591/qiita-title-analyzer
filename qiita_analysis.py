@@ -307,13 +307,21 @@ def create_wordcloud(word_df: pd.DataFrame) -> None:
     plt.tight_layout()
 
     # 日付別の出力ディレクトリを作成
-    base_output_dir = "/app/output"
+    base_output_dir = "/app/docs/images"
     date_dir = datetime.now().strftime("%Y-%m-%d")
     output_dir = os.path.join(base_output_dir, date_dir)
     os.makedirs(output_dir, exist_ok=True)
 
-    # 画像を保存
-    plt.savefig(os.path.join(output_dir, "wordcloud_qiita.png"), dpi=300, bbox_inches="tight")
+    # 画像を保存（日付別フォルダ）
+    image_path = os.path.join(output_dir, "wordcloud_qiita.png")
+    plt.savefig(image_path, dpi=300, bbox_inches="tight")
+    
+    # 最新画像も保存（READMEで参照しやすくするため）
+    latest_dir = base_output_dir
+    os.makedirs(latest_dir, exist_ok=True)
+    latest_image_path = os.path.join(latest_dir, "latest.png")
+    plt.savefig(latest_image_path, dpi=300, bbox_inches="tight")
+    
     plt.close()
 
 
@@ -339,7 +347,7 @@ def export_results(word_df: pd.DataFrame) -> None:
     word_df_clean = word_df_clean[word_df_clean["word"].str.len() > 0]
 
     # 日付別の出力ディレクトリを作成
-    base_output_dir = "/app/output"
+    base_output_dir = "/app/docs/images"
     date_dir = datetime.now().strftime("%Y-%m-%d")
     output_dir = os.path.join(base_output_dir, date_dir)
     os.makedirs(output_dir, exist_ok=True)

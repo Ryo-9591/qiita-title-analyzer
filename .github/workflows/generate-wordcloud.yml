@@ -2,26 +2,29 @@ name: Generate Qiita WordCloud Daily
 
 on:
   schedule:
-    - cron: "0 0 * * *" # UTCで毎日0時実行
+    - cron: "0 0 * * *" # UTCで毎日0時実行（JST 09:00）
   workflow_dispatch: {}
+
+permissions:
+  contents: write # リポジトリへのコミットに必要
 
 jobs:
   build-and-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build image
+      - name: Build Docker image
         run: |
           docker build -t qiita-analyzer .
 
-      - name: Prepare output dir
+      - name: Prepare output directory
         run: |
-          mkdir -p "$GITHUB_WORKSPACE/output"
+          mkdir -p "$GITHUB_WORKSPACE/docs/images"
 
       - name: Run analyzer
         env:
@@ -29,17 +32,32 @@ jobs:
         run: |
           docker run --rm \
             -e QIITA_TOKEN="$QIITA_TOKEN" \
-            -v "$GITHUB_WORKSPACE/output":/app/output \
+            -v "$GITHUB_WORKSPACE/docs/images":/app/docs/images \
             qiita-analyzer
 
-      - name: Show generated paths
+      - name: Configure Git
         run: |
-          ls -la output || true
-          find output -maxdepth 2 -type f -print || true
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
 
-      - name: Upload artifact (output)
+      - name: Update README with latest image
+        run: |
+          python3 .github/scripts/update_readme.py
+
+      - name: Commit and push changes
+        run: |
+          git add docs/images/ README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            DATE=$(date +"%Y-%m-%d")
+            git commit -m "chore: Update WordCloud image for $DATE [skip ci]"
+            git push
+          fi
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: qiita-wordcloud-output
-          path: output/**
+          path: docs/images/**
           if-no-files-found: warn
