@@ -34,7 +34,7 @@ RUN pip install --upgrade pip
 WORKDIR /app
 
 # 出力ディレクトリを作成
-RUN mkdir -p /app/output
+RUN mkdir -p /app/docs/images
 
 # Pythonライブラリのインストール
 COPY requirements.txt .
