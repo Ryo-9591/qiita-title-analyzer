@@ -1,56 +1,106 @@
-![Qiita WordCloud](docs/images/latest.png)
-
-*最終更新: 2025-11-16*
-
 # Qiita Title Analyzer
 
-Qiita APIから記事データを取得し、バズった記事のタイトルを形態素解析してWordCloudで可視化するDockerアプリケーション。
+![License](https://img.shields.io/github/license/Ryo-9591/Qiita_Title_Analyzer?style=flat-square)
+![Python](https://img.shields.io/badge/Python-3.9+-blue?style=flat-square&logo=python&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=flat-square&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-Automated-2088FF?style=flat-square&logo=github-actions&logoColor=white)
 
-## 主な機能
+![Qiita WordCloud](docs/images/latest.png)
 
-- Qiita APIからいいね数順で記事を取得
-- バズ記事（いいね数上位10%）のタイトルを抽出
-- MeCabによる形態素解析と単語頻度分析
-- WordCloudによる日本語対応の可視化
-- GitHub Actionsによる毎日の自動実行と画像更新
+*Last Updated: 2025-11-22*
 
-## 使用方法
+## 📖 概要
 
-### ローカル実行
+**Qiita Title Analyzer** は、Qiita上のトレンド記事を分析し、今どのような技術やトピックが注目されているかを可視化するツールです。
+Qiita APIを利用して「いいね数」が多い記事を収集し、そのタイトルを自然言語処理（MeCab）で解析。頻出単語をWordCloudとして生成します。
+このプロセスはGitHub Actionsによって毎日自動実行され、常に最新のトレンドをキャッチアップできます。
+
+## ✨ 主な機能
+
+-   **トレンド抽出**: Qiita APIから記事を取得し、いいね数上位10%の「バズ記事」のみを厳選して分析対象とします。
+-   **高度な形態素解析**: MeCabを使用し、日本語のタイトルを正確に分かち書き・品詞分解します。
+-   **自動化されたワークフロー**: GitHub Actionsにより毎日自動で分析が走り、結果画像がリポジトリにコミットされます。
+-   **Docker完全対応**: 環境構築の手間なく、コマンド一つでローカルでも同様の分析を実行可能です。
+
+## 🏗 アーキテクチャ
+
+![アーキテクチャ図](docs/images/architecture.png)
+
+## 🛠 技術スタック
+
+| Category | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Language** | Python 3.9+ | メインロジックの実装 |
+| **Container** | Docker | 実行環境の統一とポータビリティ |
+| **CI/CD** | GitHub Actions | 定期実行と自動デプロイ |
+| **NLP** | MeCab | 日本語形態素解析 |
+| **Analysis** | Pandas | データ操作と集計 |
+| **Visualization** | WordCloud, Matplotlib | データの可視化 |
+
+## 🚀 はじめに
+
+ローカル環境で分析を実行する手順です。
+
+### 前提条件
+
+-   Docker
+-   Docker Compose
+
+### インストールと実行
+
+リポジトリをクローンし、Docker Composeで起動するだけで分析が始まります。
 
 ```bash
+# リポジトリのクローン
+git clone https://github.com/Ryo-9591/Qiita_Title_Analyzer.git
+cd Qiita_Title_Analyzer
+
+# アプリケーションのビルドと実行
 docker-compose up --build
 ```
 
-出力先: `docs/images/YYYY-MM-DD/`（日付別フォルダ）と `docs/images/latest.png`（最新画像）
+実行が完了すると、`docs/images/` ディレクトリに結果が出力されます。
 
-### Qiita APIトークンの設定（推奨）
+### 設定（オプション）
 
-`docker-compose.yml` または環境変数で `QIITA_TOKEN` を設定すると、APIレート制限が緩和されます。
+Qiita APIのレート制限（1時間あたり60回）を緩和（1時間あたり1000回）したい場合は、アクセストークンを設定してください。
+
+1.  [Qiitaの設定ページ](https://qiita.com/settings/applications)で個人用アクセストークンを発行します。
+2.  環境変数 `QIITA_TOKEN` を設定して実行します。
 
 ```bash
-docker run -v $(pwd)/docs/images:/app/docs/images -e QIITA_TOKEN=your_token qiita-analyzer
+docker run -v $(pwd)/docs/images:/app/docs/images -e QIITA_TOKEN=your_token_here qiita-analyzer
 ```
 
-## GitHub Actions での自動実行
+## 📂 ディレクトリ構成
 
-毎日UTC 00:00（JST 09:00）に自動実行され、以下の処理が行われます：
+```text
+.
+├── .github/workflows/    # GitHub Actionsワークフロー定義
+├── docs/images/          # 生成された画像とアーティファクト
+│   ├── latest.png        # 最新のWordCloud画像
+│   └── YYYY-MM-DD/       # 日付別アーカイブ結果
+├── qiita_analysis.py     # メイン分析スクリプト
+├── Dockerfile            # Dockerイメージ定義
+├── docker-compose.yml    # Docker Compose設定
+├── requirements.txt      # Python依存関係
+└── README.md             # プロジェクトドキュメント
+```
 
-- 分析の実行と画像生成
-- `docs/images/` への保存（日付別フォルダ + `latest.png`）
-- READMEの先頭画像を自動更新
-- 変更をリポジトリに自動コミット
+## 🤖 自動化
 
-**設定**: GitHub Secretsに `QIITA_TOKEN` を登録（任意だが推奨）
+本プロジェクトは **GitHub Actions** を利用して完全自動化されています。
 
-手動実行も可能（Actions タブ → Generate Qiita WordCloud Daily → Run workflow）
+-   **スケジュール**: 毎日 UTC 00:00 (JST 09:00)
+-   **処理内容**:
+    1.  最新記事の取得と分析
+    2.  WordCloud画像の生成
+    3.  `docs/images/` への保存
+    4.  READMEの更新（最新画像の反映）
+    5.  変更のコミットとプッシュ
 
-## 出力ファイル
+手動で実行したい場合は、GitHubのリポジトリ画面から `Actions` タブを開き、`Generate Qiita WordCloud Daily` ワークフローを選択して `Run workflow` をクリックしてください。
 
-- `docs/images/latest.png`: 最新のWordCloud画像（README表示用）
-- `docs/images/YYYY-MM-DD/wordcloud_qiita.png`: 日付別のWordCloud画像
-- `docs/images/YYYY-MM-DD/analysis_results.csv`: 単語頻度分析結果
+## 📄 ライセンス
 
-## ライセンス
-
-MIT License
+このプロジェクトはMITライセンスの下で公開されています。詳細は[LICENSE](LICENSE)ファイルをご覧ください。
