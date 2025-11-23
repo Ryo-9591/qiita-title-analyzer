@@ -1,3 +1,7 @@
+![Qiita WordCloud](docs/images/latest.png)
+
+*最終更新: 2025-11-23*
+
 # Qiita Title Analyzer
 
 ![License](https://img.shields.io/github/license/Ryo-9591/Qiita_Title_Analyzer?style=flat-square)
