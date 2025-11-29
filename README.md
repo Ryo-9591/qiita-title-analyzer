@@ -9,10 +9,6 @@
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-Automated-2088FF?style=flat-square&logo=github-actions&logoColor=white)
 
-![Qiita WordCloud](docs/images/latest.png)
-
-*Last Updated: 2025-11-22*
-
 ## 📖 概要
 
 **Qiita Title Analyzer** は、Qiita上のトレンド記事を分析し、今どのような技術やトピックが注目されているかを可視化するツールです。
