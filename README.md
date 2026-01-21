@@ -1,6 +1,6 @@
 ![Qiita WordCloud](docs/images/latest.png)
 
-*最終更新: 2026-01-20*
+*最終更新: 2026-01-21*
 
 # Qiita Title Analyzer
 
